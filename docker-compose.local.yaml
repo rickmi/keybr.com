@@ -1,0 +1,29 @@
+services:
+  keybr:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      # Persistent data storage for user progress and database
+      - keybr_data:/root/.local/state/keybr
+      # Environment configuration
+      - ./keybr.env:/etc/keybr/env:ro
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  keybr_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./keybr-data
