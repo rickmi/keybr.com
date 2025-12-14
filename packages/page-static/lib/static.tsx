@@ -1,4 +1,4 @@
-import { CookieDeclaration } from "@keybr/thirdparties";
+// Cookie declaration removed for local use
 import { Article } from "@keybr/widget";
 import privacyPolicyHtml from "./privacy-policy.html.ts";
 import * as styles from "./static.module.less";
@@ -13,7 +13,7 @@ export function PrivacyPolicyPage() {
         }}
       />
       <h1>Cookie Declaration</h1>
-      <CookieDeclaration />
+      <p>Cookie tracking disabled for local use.</p>
     </Article>
   );
 }

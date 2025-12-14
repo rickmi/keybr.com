@@ -1,5 +1,5 @@
 import { Tasks } from "@keybr/lang";
-import { paddlePriceId } from "@keybr/thirdparties";
+// Payment integration removed for local use
 import { Para } from "@keybr/widget";
 import { type PricePreviewResponse } from "@paddle/paddle-js";
 import { useEffect, useState } from "react";
@@ -16,7 +16,7 @@ export function AccountPricePreview() {
         .PricePreview({
           items: [
             {
-              priceId: paddlePriceId,
+              priceId: "local-disabled", // Payment disabled for local use
               quantity: 1,
             },
           ],

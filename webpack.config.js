@@ -3,7 +3,7 @@
 import { join } from "node:path";
 import { intlTransformer } from "@keybr/scripts/intl-transformer.js";
 import { ManifestPlugin } from "@keybr/scripts/webpack-manifest.js";
-import { ENV } from "@keybr/thirdparties/webpack-env.js";
+// Third-party environment variables removed for local use
 import CompressionPlugin from "compression-webpack-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
@@ -13,7 +13,9 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 const mode = process.env.NODE_ENV || "production";
 
-console.log("webpack build time environment", ENV);
+console.log(
+  "webpack build time environment - third-party integrations removed",
+);
 
 const isVendor = (excludedVendors) => {
   const vendorsDir = join(import.meta.dirname, "node_modules");
@@ -149,7 +151,6 @@ export default [
     devtool: "source-map",
     plugins: [
       new webpack.DefinePlugin({
-        ...ENV,
         "typeof window": JSON.stringify("undefined"),
       }),
       new MiniCssExtractPlugin(),
@@ -163,7 +164,6 @@ export default [
     entry: {
       browser: "./packages/keybr-pages-browser/lib/entry.ts",
       server: "./packages/keybr-pages-server/lib/entry.ts",
-      ads: "./packages/thirdparties-ads/lib/entry.ts",
     },
     output: {
       path: join(import.meta.dirname, "root", "public", "assets"),
@@ -214,7 +214,6 @@ export default [
     devtool: "source-map",
     plugins: [
       new webpack.DefinePlugin({
-        ...ENV,
         "typeof window": JSON.stringify("object"),
       }),
       new MiniCssExtractPlugin({

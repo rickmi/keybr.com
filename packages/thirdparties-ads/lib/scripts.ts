@@ -1,20 +1,6 @@
-import { cookiebotClientId } from "@keybr/thirdparties";
-
 export function loadScripts(): Promise<boolean> {
-  return Promise.resolve()
-    .then(() =>
-      loadScript("https://consent.cookiebot.com/uc.js", (script) => {
-        script.id = "Cookiebot";
-        script.dataset.cbid = cookiebotClientId;
-        script.dataset.blockingmode = "auto";
-        script.dataset.framework = "TCFv2.2";
-      }),
-    )
-    .then(() => loadScript("https://a.pub.network/keybr-com/pubfig.min.js"))
-    .then(
-      () => true,
-      () => false,
-    );
+  // All third-party scripts disabled for local use
+  return Promise.resolve(true);
 }
 
 function loadScript(

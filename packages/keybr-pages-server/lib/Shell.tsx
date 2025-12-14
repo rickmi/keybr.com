@@ -11,11 +11,7 @@ import {
   usePageData,
 } from "@keybr/pages-shared";
 import { ThemePrefs, useTheme } from "@keybr/themes";
-import {
-  CloudflareAnalytics,
-  GoogleTagManager,
-  SetupAds,
-} from "@keybr/thirdparties";
+// Third-party integrations removed for local use
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { isBot } from "./bot.ts";
@@ -32,15 +28,7 @@ export function Shell({
   return (
     <Html>
       <Head page={page}>
-        {isPremiumUser(publicUser) || (
-          <>
-            <CloudflareAnalytics />
-            <GoogleTagManager />
-            <SetupAds>
-              <ScriptAssets entrypoint="ads" />
-            </SetupAds>
-          </>
-        )}
+        {/* Third-party integrations removed for local use */}
       </Head>
       <Body>
         {isBot(headers) ? <Content page={page} /> : <LoadingProgress />}

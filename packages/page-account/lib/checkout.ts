@@ -1,5 +1,5 @@
 import type { UserDetails } from "@keybr/pages-shared";
-import { paddlePriceId } from "@keybr/thirdparties";
+// Payment integration removed for local use
 import { loadPaddle } from "./paddle/loader.ts";
 
 export function checkoutProduct({ id, email }: UserDetails) {
@@ -15,7 +15,7 @@ export function checkoutProduct({ id, email }: UserDetails) {
       },
       items: [
         {
-          priceId: paddlePriceId,
+          priceId: "local-disabled", // Payment disabled for local use
           quantity: 1,
         },
       ],

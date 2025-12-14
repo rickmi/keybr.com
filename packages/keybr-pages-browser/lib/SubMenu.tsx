@@ -98,24 +98,8 @@ function TranslateLink() {
 }
 
 function RemoveAdsLink() {
-  const { formatMessage } = useIntl();
-  const { publicUser } = usePageData();
-  return (
-    isPremiumUser(publicUser) || (
-      <RouterLink
-        to={Pages.account.path}
-        title={formatMessage({
-          id: "footer.removeAds.description",
-          defaultMessage: "Purchase a premium account to remove ads.",
-        })}
-      >
-        {formatMessage({
-          id: "footer.removeAds.label",
-          defaultMessage: "Remove Ads",
-        })}
-      </RouterLink>
-    )
-  );
+  // Remove Ads link disabled for local ad-free version
+  return null;
 }
 
 function LocaleSwitcher({ currentPath }: { readonly currentPath: string }) {

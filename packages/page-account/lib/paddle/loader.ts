@@ -1,4 +1,4 @@
-import { paddleToken } from "@keybr/thirdparties";
+// Payment integration removed for local use
 import { getPaddleInstance, type Paddle } from "@paddle/paddle-js";
 
 let promise: Promise<Paddle> | null = null;

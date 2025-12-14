@@ -1,25 +1,4 @@
-import { googleTagManagerId } from "./config.ts";
-
-export const GoogleTagManager = ({
-  id = googleTagManagerId,
-}: {
-  id?: string;
-}) => {
-  if (process.env.NODE_ENV === "development") {
-    return null;
-  }
-  const html =
-    `window.dataLayer=window.dataLayer||[];` +
-    `function gtag(){dataLayer.push(arguments)};` +
-    `gtag("js",new Date());` +
-    `gtag("config","${id}");`;
-  return (
-    <>
-      <script dangerouslySetInnerHTML={{ __html: html }} />
-      <script
-        src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
-        defer={true}
-      />
-    </>
-  );
+export const GoogleTagManager = ({ id }: { id?: string }) => {
+  // Google Tag Manager disabled for local use
+  return null;
 };

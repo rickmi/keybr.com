@@ -20,21 +20,8 @@ export function SetupAds({
 }: {
   readonly children: ReactNode;
 }): ReactNode {
-  if (process.env.NODE_ENV === "development") {
-    return null;
-  }
-  const html =
-    `var freestar=freestar||{};` +
-    `freestar.hitTime=Date.now();` +
-    `freestar.queue=freestar.queue||[];` +
-    `freestar.config=freestar.config||{};` +
-    `freestar.config.enabled_slots=["${slot1}","${slot2}"];`;
-  return (
-    <>
-      <script dangerouslySetInnerHTML={{ __html: html }} />
-      {children}
-    </>
-  );
+  // Ads completely disabled for local use
+  return null;
 }
 
 export const AdBanner = memo(function AdBanner({
@@ -42,32 +29,6 @@ export const AdBanner = memo(function AdBanner({
 }: {
   readonly name: "BANNER_160X600_1" | "BANNER_970X90_1";
 }): ReactNode {
-  const { id, width, height } = inventory[name];
-  if (process.env.NODE_ENV === "development") {
-    return (
-      <div
-        style={{
-          width: `${width}px`,
-          height: `${height}px`,
-          background: "#999",
-        }}
-      />
-    );
-  }
-  const html = `freestar.queue.push(function(){googletag.display("${id}");});`;
-  return (
-    <div
-      key={name}
-      style={{
-        maxWidth: `${width}px`,
-        maxHeight: `${height}px`,
-        overflow: "hidden",
-      }}
-    >
-      <div className={styles.placeholder} hidden={true} />
-      <div id={id}>
-        <script dangerouslySetInnerHTML={{ __html: html }} />
-      </div>
-    </div>
-  );
+  // Ad banners completely disabled for local use
+  return null;
 });

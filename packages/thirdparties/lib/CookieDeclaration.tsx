@@ -1,21 +1,7 @@
-import { useEffect, useRef } from "react";
-import { cookiebotClientId } from "./config.ts";
+import { useRef } from "react";
 
-export const CookieDeclaration = ({
-  id = cookiebotClientId,
-}: {
-  id?: string;
-}) => {
+export const CookieDeclaration = ({ id }: { id?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const element = ref.current;
-    const script = document.createElement("script");
-    script.id = "CookieDeclaration";
-    script.src = `https://consent.cookiebot.com/${id}/cd.js`;
-    element?.appendChild(script);
-    return () => {
-      element?.removeChild(script);
-    };
-  }, [id]);
+  // Cookiebot disabled for local use
   return <div ref={ref} />;
 };
