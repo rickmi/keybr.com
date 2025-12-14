@@ -21,6 +21,9 @@ RUN npx patch-package || true
 # Only rebuild SQLite3 for Linux (skip other problematic native modules)
 RUN npm rebuild better-sqlite3 || echo "SQLite rebuild failed, will try at runtime"
 
+# Generate keyboard layouts (including both Engram variants)
+RUN npx tsx packages/keybr-generators/lib/generate-layouts.ts
+
 # Build webpack assets
 RUN npm run build
 
