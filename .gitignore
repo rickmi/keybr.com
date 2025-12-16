@@ -4,6 +4,9 @@
 # Keys
 id_*
 
+# Dygma Defy backup files (contain private Neuron ID)
+*-Defy.json
+
 # Compiled output
 packages/*/.types/
 root/public/assets/
